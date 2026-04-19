@@ -9,3 +9,5 @@ if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
     strength_score += 1
 else:
     feedback.append("- Include at least one special character (e.g., @, #, $).")
+
+   
