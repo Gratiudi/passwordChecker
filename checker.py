@@ -13,6 +13,17 @@ def check_password_strength(password):
         strength_score += 1
     else:
         feedback.append("- Include both uppercase and lowercase letters.")
+
+    if re.search(r"\d", password):
+        strength_score += 1
+    else:
+        feedback.append("- Include at least one number.")
+
+    if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        strength_score += 1
+    else:
+        feedback.append("- Include at least one special character (e.g., @, #, $).")
+
     common_patterns = ["123", "password", "qwerty", "admin"]
     if any(pattern in password.lower() for pattern in common_patterns):
         strength_score -= 1
@@ -41,5 +52,3 @@ if tips:
     print("Suggestions to improve:")
     for tip in tips:
         print(tip)
-
-   
