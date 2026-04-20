@@ -42,13 +42,20 @@ def check_password_strength(password):
     return result, feedback
 
 
-# --- User Interface ---
+#UI
 print("--- Password Strength Evaluator ---")
-user_pwd = input("Enter a password to test: ")
-rating, tips = check_password_strength(user_pwd)
+print("Type 'quit' or 'exit' to stop.")
 
-print(f"\nStrength Rating: {rating}")
-if tips:
-    print("Suggestions to improve:")
-    for tip in tips:
-        print(tip)
+while True:
+    user_pwd = input("Enter a password to test: ")
+    if user_pwd.strip().lower() in {"quit", "exit"}:
+        print("Goodbye!")
+        break
+
+    rating, tips = check_password_strength(user_pwd)
+    print(f"\nStrength Rating: {rating}")
+    if tips:
+        print("Suggestions to improve:")
+        for tip in tips:
+            print(tip)
+    print("\n---")
